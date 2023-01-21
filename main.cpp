@@ -2,6 +2,11 @@
 
 using namespace std;
 
+struct User {
+	string name;
+	int id = 0;
+};
+
 int main() { // отправитель
 	setlocale(LC_ALL, "RUS");
 
