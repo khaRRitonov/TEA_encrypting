@@ -1,6 +1,7 @@
-//
-// Алгоритмы шифрования 
-// 
+//---------------------------------------------------------------
+// Алгоритмы шифрования Tiny Encryption Algorithm (TEA)
+// --------------------------------------------------------------
+
 // шифрование
 void encipher(const unsigned long* const v, unsigned long* const w, const unsigned long* const k) {
 	static_assert(sizeof(long) == 4, "неверный размер long для TEA");
