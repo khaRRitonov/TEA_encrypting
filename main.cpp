@@ -1,28 +1,21 @@
 #include "TEA.h"
 
-using namespace std;
-
-struct User {
-	string name;
-	int id = 0;
-};
-
 int main() { // отправитель
 	setlocale(LC_ALL, "RUS");
 
 	const int nchar = 2 * sizeof(long);
 	const int kchar = 2 * nchar;
 
-	string op;
-	string key;
+	std::string op;
+	std::string key;
 
-	cout << "Введите ключ шифрования: ";
-	cin >> key;
+	std::cout << "Введите ключ шифрования: ";
+	std::cin >> key;
 
 	while (key.size() < kchar) key += '0'; // дополнение ключа
-	ifstream ifs{ "text.txt" };
-	ofstream ofs{ "en_text.txt" };
-	if (!ifs || !ofs) cerr << "фаил не найден" << endl;
+	std::ifstream ifs{ "text.txt" };
+	std::ofstream ofs{ "en_text.txt" };
+	if (!ifs || !ofs) std::cerr << "фаил не найден" << std::endl;
 
 	const unsigned long* k = reinterpret_cast<const unsigned long*>(key.data());
 
@@ -32,12 +25,12 @@ int main() { // отправитель
 	int count = 0;
 
 	while (ifs.get(inbuf[count])) {
-		ofs << hex; // используется шестнадцатеричный вывод
+		ofs << std::hex; // используется шестнадцатеричный вывод
 		if (++count == nchar) {
 			encipher(inptr, outptr, k);
 			// заполнение ведущими нулями
-			ofs << setw(8) << setfill('0') << outptr[0] << ' '
-				<< setw(8) << setfill('0') << outptr[1] << ' ';
+			ofs << std::setw(8) << std::setfill('0') << outptr[0] << ' '
+				<< std::setw(8) << std::setfill('0') << outptr[1] << ' ';
 			count = 0;
 		}
 	}
@@ -57,14 +50,14 @@ int main2() { // получатель
 	const int nchar = 2 * sizeof(long);
 	const int kchar = 2 * nchar;
 
-	string key;
-	cout << "Введите ключ дешифрования: ";
-	cin >> key;
+	std::string key;
+	std::cout << "Введите ключ дешифрования: ";
+	std::cin >> key;
 
 	while (key.size() < kchar) key += '0';
 
-	ifstream ifs{ "en_text.txt" };
-	if (!ifs) cerr << "файл не найден" << endl;
+	std::ifstream ifs{ "en_text.txt" };
+	if (!ifs) std::cerr << "файл не найден" << std::endl;
 
 	const unsigned long* k = reinterpret_cast<const unsigned long*>(key.data());
 
@@ -73,11 +66,11 @@ int main2() { // получатель
 	outbuf[nchar] = 0;
 	unsigned long* outptr = reinterpret_cast<unsigned long*>(outbuf);
 
-	ifs.setf(ios_base::hex, ios_base::basefield);
+	ifs.setf(std::ios_base::hex, std::ios_base::basefield);
 
 	while (ifs >> inptr[0] >> inptr[1]) {
 		decipher(inptr, outptr, k);
-		cout << outbuf;
+		std::cout << outbuf;
 	}
 
 	return 0;
