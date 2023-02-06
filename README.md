@@ -1,4 +1,4 @@
-# TEA_encrypting
+# TEA encrypting
 ### English
 Working with data at the level of bits and bytes using a simple encryption algorithm as an example - Tiny Encryption Algorithm (TEA).
 ##
