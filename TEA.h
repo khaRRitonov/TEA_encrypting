@@ -1,13 +1,16 @@
 //---------------------------------------------------------------
-// Алгоритмы шифрования Tiny Encryption Algorithm (TEA)
+// ГЂГ«ГЈГ®Г°ГЁГІГ¬Г» ГёГЁГґГ°Г®ГўГ Г­ГЁГї Tiny Encryption Algorithm (TEA)
 // --------------------------------------------------------------
 
 #include <iostream>
 #include <fstream>
 #include <iomanip>
 
-// шифрование
+// ГёГЁГґГ°Г®ГўГ Г­ГЁГҐ
 void encipher(const unsigned long* const v, unsigned long* const w, const unsigned long* const k);
 
-// дешифрование
+// Г¤ГҐГёГЁГґГ°Г®ГўГ Г­ГЁГҐ
 void decipher(const unsigned long* const v, unsigned long* const w, const unsigned long* const k);
+
+// --------------------------------------------------------------
+// --------------------------------------------------------------
